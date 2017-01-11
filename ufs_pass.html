@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ufs8090</title>
+	<style>
+	*{margin:0;padding:0;user-select:none;-webkit-tap-highlight-color:rgba(0,0,0,0);}
+	a{text-decoration:none;}
+	.clearfix:after{content:"020";display:block;height:0;clear:both;visibility:hidden;}
+	ul{list-style:none}
+	html,body{margin:0;padding:0;height:100%;background-color:#333;font-family: "Helvetica Neue", Helvetica, STHeiTi, sans-serif;}
+	input{font-family:font-family: "Helvetica Neue", Helvetica, STHeiTi, sans-serif;}
+	.wrap{width:750px;height:1220px;position:relative;left:50%;margin-left:-375px;overflow:hidden;background:#2E4240}
+	.header{text-align:center;margin-top:188px;}
+	.header span{display:inline-block;width:28px;height:28px;border-radius:100px;border:2px solid #FFF;user-select:none;margin:20px 13px;}
+	.header h1{font-size:54px;user-select:none;color:white;}
+	section{width:532px;margin:0 auto;}
+	section .number{position:relative;width:144px;height:144px;border-radius:100px;border:2px solid white;margin:20px 13px;display:inline-block;text-align:center;font-size:62px;line-height:122px;transition:all .5s;color:white;}
+
+	section .number span{font-size:15px;position:absolute;bottom:-20px;left:50%;color:white;transform:translate(-47%,0);letter-spacing:4px;user-select:none;}
+	section .number:active{background-color: white;color: black;}
+	section ul li:last-child{margin-left: 194px;line-height: 146px;}
+	.ico8{position: absolute;width: 144px;height: 144px;left: 0;background: url("images/pass.png") no-repeat -25px -33px;color: transparent;display: none;}
+
+	.ico0{position: absolute;width: 144px;height: 144px;left: 0;background: url("images/pass.png") no-repeat -267px -35px;color: transparent;display: none;}
+	.ico9{position: absolute;width: 144px;height: 144px;left: 0;background: url("images/pass.png") no-repeat -160px -183px;color: transparent;display: none;}
+	.box{width:750px;}
+	.wite{background-color: white;text-shadow: 0 0 10px #fff;}
+	.del{animation: ani1 .6s linear  alternate;-webkit-animation: ani1 .6s linear  alternate;}
+	@keyframes ani1 {
+		0%{ width: 750px;}
+    	10%{ width: 634px;}
+    	20%{ width: 517px;}
+    	25%{ width: 634px;}
+    	30%{ width: 750px;}
+    	40%{ width: 875px;}
+    	50%{width: 1000px;}
+    	55%{ width: 870px;}
+    	60%{ width: 710px;}
+    	70%{width: 790px;}
+    	80%{ width: 730px;}
+    	90%{width: 760px;}
+    	100%{width: 750px;}
+}
+	@-webkit-keyframes  ani1 {
+    	0%{ width: 750px;}
+    	10%{ width: 634px;}
+    	20%{ width: 517px;}
+    	25%{ width: 634px;}
+    	30%{ width: 750px;}
+    	40%{ width: 875px;}
+    	50%{width: 1000px;}
+    	55%{ width: 870px;}
+    	70%{ width: 740px;}
+    	80%{width: 760px;}
+    	100%{width: 750px;}
+}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<div class="header">
+			<h1>开启密码</h1>
+			<div class="box">
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>			
+		</div>
+	<section>
+		<ul>
+			<li class="number" data-id="1">1</li>
+			<li class="number" data-id="2">2<span>ABC</span></li>
+			<li class="number" data-id="3">3<span>DEF</span></li>
+			<li class="number" data-id="4">4<span>GHI</span></li>
+			<li class="number" data-id="5">5<span>JKL</span></li>
+			<li class="number" data-id="6">6<span>MNO</span></li>
+			<li class="number" data-id="7">7<span>PQRS</span></li>
+			<li class="number" id="js-pass8" data-id="8">8<span>PQRS</span><i class="ico8"></i></li>
+			<li class="number" id="js-pass9" data-id="9">9<span>WXYZ</span><i class="ico9"></i></li>
+			<li class="number" id="js-pass0" data-id="0">0<i class="ico0"></i></li>
+
+		</ul>
+	</section>>
+	</div>
+</body>
+<script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js">
+</script>
+<script>
+(function(){
+    var vmModel = {
+        userCheck:[],  //用户点击的密码
+        answer:['8','0','9','0'],
+        check:function () {
+            var num = 0;
+            for(var i=0;i<4;i++){
+                if(this.answer[i].indexOf(this.userCheck[i])!=-1){
+                    num++;
+                }
+            }
+            return num;
+        }
+    };
+
+
+    /*密码点击*/
+    $("section li").on('touchend',function () {
+        var $_pass=$(this).attr('data-id');
+        var spanarr = $("header span");
+        vmModel.userCheck.push($_pass);
+        $("header span").eq(vmModel.userCheck.length-1).addClass('wite');
+
+        /*输入的密码是四位数*/
+        if(vmModel.userCheck.length == 4){
+            /*密码正确*/
+            if(vmModel.check() == 4){
+                setTimeout(function () {
+                    alert("恭喜你回答正确");
+                },500)
+
+            }else{
+                /*密码写错*/
+                $(".box").addClass('del');
+                setTimeout(function () {
+                    for(var i=0;i<4;i++){
+                        $("header span").eq(i).removeClass('wite');
+                        $(".box").removeClass('del');
+                        vmModel.userCheck = [];
+                    };
+                },500);
+            }
+        }
+    });
+
+
+
+
+
+
+    /*8090点击的头像*/
+    $("#js-pass8").on('touchend',function () {
+        $(".ico8").fadeOut();
+    });
+    $("#js-pass8").on(' touchstart',function () {
+        $(".ico8").fadeIn(500);
+    });
+
+
+    $("#js-pass9").on('touchend',function () {
+        $(".ico9").fadeOut();
+
+    });
+    $("#js-pass9").on(' touchstart',function () {
+        $(".ico9").fadeIn(500);
+    });
+
+
+    $("#js-pass0").on('touchend',function () {
+        $(".ico0").fadeOut();
+    });
+    $("#js-pass0").on(' touchstart',function () {
+        $(".ico0").fadeIn(500);
+    });
+
+
+})(jQuery)
+</script>
+</html>
