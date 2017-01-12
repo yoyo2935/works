@@ -105,7 +105,7 @@
 
 
     /*密码点击*/
-    $("section li").on('touchend',function () {
+    $("section li").on('click',function () {
         var $_pass=$(this).attr('data-id');
         var spanarr = $("header span");
         vmModel.userCheck.push($_pass);
@@ -139,27 +139,27 @@
 
 
     /*8090点击的头像*/
-    $("#js-pass8").on('touchend',function () {
+    $("#js-pass8").on('click',function () {
         $(".ico8").fadeOut();
     });
-    $("#js-pass8").on(' touchstart',function () {
+    $("#js-pass8").on('click',function () {
         $(".ico8").fadeIn(500);
     });
 
 
-    $("#js-pass9").on('touchend',function () {
+    $("#js-pass9").on('click',function () {
         $(".ico9").fadeOut();
 
     });
-    $("#js-pass9").on(' touchstart',function () {
+    $("#js-pass9").on('click',function () {
         $(".ico9").fadeIn(500);
     });
 
 
-    $("#js-pass0").on('touchend',function () {
+    $("#js-pass0").on('click',function () {
         $(".ico0").fadeOut();
     });
-    $("#js-pass0").on(' touchstart',function () {
+    $("#js-pass0").on('click',function () {
         $(".ico0").fadeIn(500);
     });
 
