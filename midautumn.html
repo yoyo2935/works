@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta id="viewport" name="viewport" />
+    <title>新年贺卡</title>
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    font-size: 22px;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+a {
+    text-decoration: none;
+}
+.clearfix:after {
+    content: "020";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+ul {
+    list-style:none
+}
+html, body {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-color: #333;
+    font-family: "Helvetica Neue", Helvetica, STHeiTi, sans-serif;
+}
+textarea,button {
+    outline: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+input, select {
+    vertical-align: middle;
+    font-family: "Helvetica Neue", Helvetica, STHeiTi, sans-serif;
+}
+.wrap {
+    position: relative;
+    width: 750px;
+    height: 1220px;
+    left:50%;
+    margin-left: -375px;
+    /*top:50%;*/
+    /*margin-top: -610px;*/
+    overflow: hidden;
+    background-image: url("images/wrapbg.jpg");
+}
+/*联合利华icon*/
+.icon {
+    position: absolute;
+    background: url("images/bg.png") no-repeat -393px -588px;
+    width: 122px;
+    height: 44px;
+    left: 65px;
+    top:45px;
+    z-index: 13;
+}
+/*圆盘*/
+.disk {
+    position: relative;
+    background: white;
+    width: 866px;
+    height: 866px;
+    left: 50%;
+    top:126px;
+    margin-left:-433px;
+    border-radius: 100%;
+    -webkit-border-radius: 100%;
+    z-index: 6;
+    -webkit-box-shadow:0 0 60px white;
+    box-shadow:0 0 60px white;
+}
+/*圆盘初始动画*/
+.diskani {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    animation: bigani 1.5s linear .2s forwards;
+    -webkit-animation: bigani 1.5s linear .2s forwards;
+}
+.disktopani {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    animation: topani 2s linear forwards;
+    -webkit-animation: topani 2s linear forwards;
+}
+.wrap >i,#js-fontbox i,.disk i {
+    position: absolute;
+    background-image: url("images/bg.png");
+}
+@keyframes bigani {
+    0% {
+        opacity:1;
+        transform: scale(0)
+    }
+    100% {
+        opacity:1;
+        transform: scale(1)
+    }
+}
+@-webkit-keyframes bigani {
+    0% {
+        opacity:1;
+        -webkit-transform: scale(0)
+    }
+    100% {
+        opacity:1;
+        -webkit-transform: scale(1)
+    }
+}
+@keyframes topani {
+    0% {
+        opacity:1;
+        transform:translate(0,0)
+    }
+    100% {
+        opacity:1;
+        transform:translate(0,-540px)
+    }
+}
+@-webkit-keyframes topani {
+    0% {
+        opacity:1;
+        -webkit-transform:translate(0,0)
+    }
+    100% {
+        opacity:1;
+        -webkit-transform:translate(0,-540px)
+    }
+}
+/*边框*/
+.frame {
+    position: absolute;
+    width: 831px;
+    height: 831px;
+    left: 50%;
+    top: 21px;
+    margin-left: -414.5px;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    animation: frameani 320s linear 1.9s infinite ;
+    -webkit-animation: frameani 320s linear 1.9s infinite ;
+}
+@keyframes frameani {
+    0% {
+        transform: rotate(0deg)
+    }
+    100% {
+        transform: rotate(360deg)
+    }
+}
+@-webkit-keyframes frameani {
+    0% {
+        -webkit-transform: rotate(0deg)
+    }
+    100% {
+        -webkit-transform: rotate(360deg)
+    }
+}
+/*花朵*/
+.flower {
+    background-position: -405px -13px;
+    width: 495px;
+    height: 508px;
+    left: -94px;
+    top: 832px;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    transform-origin:0 50%;
+    -webkit-transform-origin:0 50%;
+    animation: flowerani 4s linear infinite alternate;
+    -webkit-animation:flowerani 4s linear infinite alternate;
+}
+@keyframes flowerani {
+    0% {
+        transform:rotate(2deg)
+    }
+    100% {
+        transform:rotate(-2deg)
+    }
+}
+@-webkit-keyframes flowerani {
+    0% {
+        -webkit-transform:rotate(2deg)
+    }
+    100% {
+        -webkit-transform:rotate(-2deg)
+    }
+}
+/*鸡*/
+.chicken {
+    position: absolute;
+    background-position: -579px -531px;
+    width: 308px;
+    height: 339px;
+    top:-666px;
+    z-index: 16;
+    left: 316px;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    animation: chickenani 2s linear 1.4s forwards;
+    -webkit-animation: chickenani 2s linear 1.4s forwards;
+}
+@keyframes chickenani {
+    0% {
+        transform:translate(0,0)
+    }
+    60% {
+        transform:translate(0,950px)
+    }
+    65% {
+        transform:translate(0,960px)
+    }
+    70% {
+        transform:translate(0,944px)
+    }
+    75% {
+        transform:translate(0,964px)
+    }
+    80% {
+        transform:translate(0,950px)
+    }
+    85% {
+        transform:translate(0,960px)
+    }
+    90% {
+        transform:translate(0,952px)
+    }
+    95% {
+        transform:translate(0,958px)
+    }
+    100% {
+        transform:translate(0,955px)
+    }
+}
+@-webkit-keyframes chickenani {
+    0% {
+        -webkit-transform:translate(0,0)
+    }
+    60% {
+        -webkit-transform:translate(0,950px)
+    }
+    65% {
+        -webkit-transform:translate(0,960px)
+    }
+    70% {
+        -webkit-transform:translate(0,944px)
+    }
+    75% {
+        -webkit-transform:translate(0,964px)
+    }
+    80% {
+        -webkit-transform:translate(0,950px)
+    }
+    85% {
+        -webkit-transform:translate(0,960px)
+    }
+    90% {
+        -webkit-transform:translate(0,952px)
+    }
+    95% {
+        -webkit-transform:translate(0,958px)
+    }
+    100% {
+        -webkit-transform:translate(0,955px)
+    }
+}
+/*拜年啦*/
+#js-fontbox {
+    position:absolute;
+    z-index: 7;
+}
+.bai {
+    background-position: -10px -380px;
+    width: 89px;
+    height: 88px;
+    left: 195px;
+    top:306px;
+    transform: scale(0);
+    -webkit-transform:scale(0);
+    animation: fontani .7s linear 3.1s forwards;
+    -webkit-animation: fontani .7s linear 3.1s forwards;
+}
+@keyframes fontani {
+    0% {
+        transform:scale(0)
+    }
+    70% {
+        transform:scale(1.3)
+    }
+    100% {
+        transform:scale(1)
+    }
+}
+@-webkit-keyframes fontani {
+    0% {
+        -webkit-transform:scale(0)
+    }
+    70% {
+        -webkit-transform:scale(1.3)
+    }
+    100% {
+        -webkit-transform:scale(1)
+    }
+}
+.nian {
+    background-position: -132px -360px;
+    width: 123px;
+    height: 125px;
+    left: 124px;
+    top:401px;
+    transform: scale(0);
+    -webkit-transform: scale(0);
+    animation: fontani .7s linear 3.7s forwards;
+    -webkit-animation: fontani .7s linear 3.7s forwards;
+}
+.la {
+    background-position: -258px 0;
+    width: 86px;
+    height: 87px;
+    left: 195px;
+    top: 530px;
+    transform: scale(0);
+    -webkit-transform: scale(0);
+    animation: fontani .7s linear 4.3s forwards;
+    -webkit-animation: fontani .7s linear 4.3s forwards;
+}
+/*感叹号*/
+.wonderico {
+    background-position: -360px -4px;
+    width: 43px;
+    height: 89px;
+    left: -100px;
+    top:528px;
+    transform: scale(0);
+    -webkit-transform: scale(0);
+    animation: wondericoani .5s linear 4.9s forwards ;
+    -webkit-animation: wondericoani .5s linear 4.9s forwards;
+}
+@keyframes wondericoani {
+    0% {
+        transform:translate(0,0)
+    }
+    100% {
+        transform:translate(400px,0)
+    }
+}
+@-webkit-keyframes wondericoani {
+    0% {
+        -webkit-transform:translate(0,0)
+    }
+    100% {
+        -webkit-transform:translate(400px,0)
+    }
+}
+.leftcloud {
+    background-position: -718px -945px;
+    width: 95px;
+    height: 75px;
+    left: -750px;
+    top:528px;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    opacity: 0;
+    animation: cloudani 10s linear 4.2s infinite ;
+    -webkit-animation:cloudani 10s linear 4.2s infinite ;
+}
+@keyframes cloudani {
+    0% {
+        opacity: 0;
+        transform:translate(0,0)
+    }
+    10% {
+        opacity: 1;
+        transform:translate(750px,0)
+    }
+    100% {
+        opacity: 1;
+        transform:translate(1500px,0)
+    }
+}
+@-webkit-keyframes cloudani {
+    0% {
+        opacity: 0;
+        -webkit-transform:translate(0,0)
+    }
+    10% {
+        opacity: 1;
+        -webkit-transform:translate(750px,0)
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform:translate(1500px,0)
+    }
+}
+.rightcloud {
+    background-position: -269px -112px;
+    width: 110px;
+    height: 87px;
+    left: -750px;
+    top:595px;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    opacity: 0;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    animation: cloudani 10s linear 8s infinite ;
+    -webkit-animation:cloudani 10s linear 8s infinite ;
+}
+.f2017 {
+    background-position: -10px -497px;
+    width: 320px;
+    height: 227px;
+    left: 50%;
+    margin-left: -160px;
+    top:535px;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    animation: ani7 1s linear alternate;
+    -webkit-animation:ani7 1s linear alternate;
+    animation-iteration-count:6;
+    -webkit-animation-iteration-count:6;
+}
+@keyframes ani7 {
+    0% {
+        transform:rotateY(0deg);
+    }
+    100% {
+        transform:rotateY(90deg);
+    }
+}
+@-webkit-keyframes ani7 {
+    0% {
+        -webkit-transform:rotateY(0deg);
+    }
+    100% {
+        -webkit-transform:rotateY(90deg);
+    }
+}
+/*灯笼块*/
+.lantern {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    animation: lanternani 8s linear infinite ;
+    -webkit-animation:lanternani 8s linear infinite;
+}
+@keyframes lanternani {
+    0% {
+        opacity:1;
+        transform:translate(0,0)
+    }
+    100% {
+        opacity:0;
+        transform:translate(0,-250px)
+    }
+}
+@-webkit-keyframes lanternani {
+    0% {
+        opacity:1;
+        -webkit-transform:translate(0,0)
+    }
+    100% {
+        opacity:0;
+        -webkit-transform:translate(0,-250px)
+    }
+}
+.lantern1 {
+    background-position: -22px -19px;
+    width: 89px;
+    height: 266px;
+    left:545px;
+    top:602px;
+    animation-delay: 4s;
+    -webkit-animation-delay: 4s;
+}
+.lantern2 {
+    background-position: -139px -8px;
+    width: 109px;
+    height: 323px;
+    left:159px;
+    top:904px;
+}
+.lantern3 {
+    background-position: -303px -299px;
+    width: 54px;
+    height: 162px;
+    left:65px;
+    top:391px;
+    animation-delay: 7s;
+    -webkit-animation-delay: 7s;
+}
+/*信*/
+.letter {
+    position: absolute;
+    width: 567px;
+    height: 516px;
+    left: 93px;
+    top:496px;
+}
+.letter i {
+    display: block;
+    margin-bottom: 29px;
+    background-image: url("images/bg.png");
+}
+.firstline {
+    background-position: -9px -815px;
+    width: 0;
+    height: 50px;
+}
+.secondlines {
+    background-position: -8px -892px;
+    width: 0;
+    height: 29px;
+}
+.three {
+    background-position: -9px -950px;
+    width: 0;
+    height: 28px;
+}
+.four {
+    background-position:   -7px -1008px;
+    width: 0;
+    height: 28px;
+}
+.five {
+    background-position: -9px -1067px;
+    width: 0;
+    height: 28px;
+}
+.six {
+    background-position: -11px -1125px;
+    width: 0;
+    height: 28px;
+}
+.seven {
+    background-position: -6px -1184px;
+    width: 0;
+    height: 27px;
+}
+/*签名块*/
+.flright {
+    position: absolute;
+    width: 203px;
+    height: 92px;
+    right: 0;
+    bottom:0;
+    text-align: center;
+}
+.tip {
+    background-position: -657px -1163px;
+    width: 0;
+    height: 14px;
+}
+.autograph {
+    background-position: -652px -1086px;
+    width: 0;
+    height: 66px;
+}
+    </style>
+    <script src="http://aloe-static.oss-cn-hangzhou.aliyuncs.com/zoom/zoom75.js"></script>
+</head>
+<body>
+<div class="wrap">
+    <!--联合利华icon-->
+    <i class="icon" ></i>
+    <!--鸡-->
+    <i class="chicken" id="js-chicken"></i>
+    <!--花朵-->
+    <i class="flower"></i>
+    <!--灯笼块-->
+    <i class="lantern lantern1"></i>
+    <i class="lantern lantern2"></i>
+    <i class="lantern lantern3"></i>
+    <!--文字块-->
+    <div id="js-fontbox">
+        <i class="bai"></i>
+        <i class="nian"></i>
+        <i class="la"></i>
+        <i class="wonderico"></i>
+    </div>
+    <!--圆盘内的-->
+    <div class="disk diskani " id="js-disk">
+        <!--边框-->
+        <img src="images/wrap.png" class="frame">
+        <i class="rightcloud"></i>
+        <i class="f2017" ></i>
+        <i class="leftcloud"></i>
+    </div>
+
+    <div class="letter" >
+        <i class="firstline" id="js-firstline"> </i>
+        <i class="secondlines" id="js-secondlines"> </i>
+        <i class="three" id="js-three"> </i>
+        <i class="four" id="js-four"> </i>
+        <i class="five" id="js-five"> </i>
+        <i class="six" id="js-six"> </i>
+        <i class="seven" id="js-seven"> </i>
+        <section class="flright clearfix" >
+            <i class="autograph" id="js-name" style="margin-bottom: 12px;"></i>
+            <i class="tip"  id="js-tip" style="display: inline-block"></i>
+        </section>
+    </div>
+</div>
+<script src="//cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>
+<script>
+    (function($){
+        setTimeout(function () {
+            $("#js-disk").removeClass("diskani").addClass("disktopani");
+            $("#js-fontbox").fadeOut(1600);
+            $("#js-chicken").fadeOut(1600);
+        },9000);
+
+        setTimeout(function () {
+            $("#js-firstline").animate({'width':392},1400,function () {
+                $("#js-secondlines").animate({'width':554},3200,function () {
+                    $("#js-three").animate({'width':418},2400,function () {
+                        $("#js-four").animate({'width':553},3200,function () {
+                            $("#js-five").animate({'width':505},3000,function () {
+                                $("#js-six").animate({'width':550},3600,function () {
+                                    $("#js-seven").animate({'width':41},20,function () {
+                                        $("#js-tip").animate({'width':192},200,function () {
+                                            $("#js-name").animate({'width':203},1000)
+                                        })
+                                    })
+                                })
+                            })
+                        })
+                    })
+                })
+            })
+        },11000)
+    })(jQuery);
+</script>
+</body>
+</html>
